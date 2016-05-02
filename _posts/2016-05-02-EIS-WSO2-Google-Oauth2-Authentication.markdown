@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "EIS/WSO2 Oauth2.0 For Google Federated Authentication"
-date:   2016-05-01 12:31:11 -0400
+date:   2016-05-02 12:31:11 -0400
 categories: EIS WSO2 OAuth2 Google SSO 
 ---
 
@@ -21,7 +21,7 @@ Additional Query Parameters = scope=openid
 ```
 Here Are our configs
 
-![Claim Configuration](http://ChristopherDavenport.github.io/images/posts/2016-05/Wso2IdentityProviderClaimConfiguration.png)
+![Claim Configuration](http://ChristopherDavenport.github.io/images/posts/2016-05/WSO2IdentityProviderClaimConfiguration.png)
 
 ![Federated Authentication](http://ChristopherDavenport.github.io/images/posts/2016-05/WSO2FederatedAuthenticatorConfig.png)
 
