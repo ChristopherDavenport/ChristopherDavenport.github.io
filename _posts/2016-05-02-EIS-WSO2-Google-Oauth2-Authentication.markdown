@@ -2,7 +2,7 @@
 layout: post
 title:  "EIS/WSO2 Oauth2.0 For Google Federated Authentication"
 date:   2016-05-01 12:31:11 -0400
-categories: EIS, WSO2, OAuth2, Google, SSO 
+categories: EIS WSO2 OAuth2 Google SSO 
 ---
 
 This blog post assumes that you already have a working instance of WSO2 IdentityService. I will also assume that you have a google domain. However if you have no problem asking for permission from your students then you don't need to do even that.
@@ -21,16 +21,16 @@ Additional Query Parameters = scope=openid
 ```
 Here Are our configs
 
-![Claim Configuration](http://www.ChristopherDavenport.github.io/images/posts/2016-05/Wso2IdentityProviderClaimConfiguration.png)
+![Claim Configuration](http://ChristopherDavenport.github.io/images/posts/2016-05/Wso2IdentityProviderClaimConfiguration.png)
 
-![Federated Authentication](http://www.ChristopherDavenport.github.io/images/posts/2016-05/WSO2FederatedAuthenticatorConfig.png)
+![Federated Authentication](http://ChristopherDavenport.github.io/images/posts/2016-05/WSO2FederatedAuthenticatorConfig.png)
 
 There you go. You are done. However its not very useful without actually doing something. In order for us to connect it to main applications we need to have that unique identifier mapping. We have a more complex system to make sure we are mapping the correct email accounts. You can find the current code [here](https://github.com/ChristopherDavenport/Eckerd-Jobs/blob/master/src/main/scala/scripts/GoogleUpdateGobumap.scala) The important endpoint is that I new have the unique google account id in gobumap mapped to the pidm. I will further expand on my scala api later. It is not for this post. 
 
 Now for SSOManager we need to create a CAS endpoint that maps all of the information to our applications that we can cover in another post if there is interest. The endpoint expects a claim called UDC_IDENTIFIER so that is what we give it. Then we use our Authentication to google as the backend and send the tickets to the appropriate endpoint. Assert identity with the mapped local subject identifier so that we are now existing as that id that we have mapped in gobumap.
 
-![Service Provider Claim Configuration](http://www.ChristopherDavenport.github.io/images/posts/2016-05/ServiceProviderClaimConfiguration.png)
+![Service Provider Claim Configuration](http://ChristopherDavenport.github.io/images/posts/2016-05/ServiceProviderClaimConfiguration.png)
 
-![Service Provider Authentication Configuration] (http://www.ChristopherDavenport.github.io/images/posts/2016-05/ServiceProviderAuthenticationConfiguration.png)
+![Service Provider Authentication Configuration](http://ChristopherDavenport.github.io/images/posts/2016-05/ServiceProviderAuthenticationConfiguration.png)
 
 Now all you have to do is have the SSOManager in place to receive the tickets.
