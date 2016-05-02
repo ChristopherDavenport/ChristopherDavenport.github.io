@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "EIS/WSO2 Oauth2.0 For Google Federated Authentication"
-date:   2016-05-02 12:31:11 -0400
+date:   2016-05-02 11:10:11 -0400
 categories: EIS WSO2 OAuth2 Google SSO 
 ---
 
