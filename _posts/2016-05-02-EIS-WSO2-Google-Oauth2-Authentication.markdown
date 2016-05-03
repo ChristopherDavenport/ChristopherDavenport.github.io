@@ -34,3 +34,5 @@ Now for SSOManager we need to create a CAS endpoint that maps all of the informa
 ![Service Provider Authentication Configuration](http://ChristopherDavenport.github.io/images/posts/2016-05/ServiceProviderAuthenticationConfiguration.png)
 
 Now all you have to do is have the SSOManager in place to receive the tickets.
+
+Feel free to email or contact me on ECommunities with any questions you might have.
