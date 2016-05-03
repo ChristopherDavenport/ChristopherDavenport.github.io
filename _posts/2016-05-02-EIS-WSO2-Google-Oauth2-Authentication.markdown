@@ -5,7 +5,7 @@ date:   2016-05-02 11:10:11 -0400
 categories: EIS WSO2 OAuth2 Google SSO 
 ---
 
-This blog post assumes that you already have a working instance of WSO2 IdentityService. I will also assume that you have a google domain. However if you have no problem asking for permission from your students then you don't need to do even that.
+This blog post assumes that you already have a working instance of WSO2 IdentityService. I will also assume that you have a google domain. However if you have no problem asking for permission from your students then you don't need to do even that. While this is a general guide, as it applies to anyone with a goole account and a WSO2 Identity Server, it was developed specifically for a Single-Sign On tool for Ellucian Banner SSOManager to allow authentication to all of WebTailor and Internet Native Banner Forms.
 
 Log into the WSO2 Identiy Server and We need to configure a custom claim. I selected the http://wso2.org/claims schema. Click Add New Claim Mapping. I created one called UDC_IDENTIFIER. It is supported by Default and Read-Only. We are not utilizing this to provision our accounts. This is mapped to uid for our ldap, which is not applicative or necessary for what follows. Merely that it exists so that we can do a custom mapping.
 
