@@ -5,7 +5,7 @@ date:   2016-05-02 11:10:11 -0400
 categories: EIS WSO2 OAuth2 Google SSO 
 ---
 
-This blog post assumes that you already have a working instance of WSO2 IdentityService. I will also assume that you have a google domain. However if you have no problem asking for permission from your students then you don't need to do even that. While this is a general guide, as it applies to anyone with a goole account and a WSO2 Identity Server, it was developed specifically for a Single-Sign On tool for Ellucian Banner SSOManager to allow authentication to all of WebTailor and Internet Native Banner Forms.
+This blog post assumes that you already have a working instance of WSO2 IdentityService. I will also assume that you have a google domain. However if you have no problem asking for permission from your students then you don't need to do even that. While this is a general guide, as it applies to anyone with a google account and a WSO2 Identity Server, it was developed specifically as a Single-Sign On tool for Ellucian Banner SSOManager to allow authentication to all of WebTailor and Internet Native Banner Forms.
 
 Log into the WSO2 Identiy Server and We need to configure a custom claim. I selected the http://wso2.org/claims schema. Click Add New Claim Mapping. I created one called UDC_IDENTIFIER. It is supported by Default and Read-Only. We are not utilizing this to provision our accounts. This is mapped to uid for our ldap, which is not applicative or necessary for what follows. Merely that it exists so that we can do a custom mapping.
 
@@ -25,9 +25,9 @@ Here Are our configs
 
 ![Federated Authentication](http://ChristopherDavenport.github.io/images/posts/2016-05/WSO2FederatedAuthenticatorConfig.png)
 
-There you go. You are done. However its not very useful without actually doing something. In order for us to connect it to main applications we need to have that unique identifier mapping. We have a more complex system to make sure we are mapping the correct email accounts. You can find the current code [here](https://github.com/ChristopherDavenport/Eckerd-Jobs/blob/master/src/main/scala/scripts/GoogleUpdateGobumap.scala) The important endpoint is that I new have the unique google account id in gobumap mapped to the pidm. I will further expand on my scala api later. It is not for this post. 
+There you go. You are done. However its not very useful without actually doing something. In order for us to connect it to main applications we need to have that unique identifier mapping. We have a more complex system to make sure we are mapping the correct email accounts. You can find the current code [here](https://github.com/ChristopherDavenport/Eckerd-Jobs/blob/master/src/main/scala/scripts/GoogleUpdateGobumap.scala) The important endpoint is that I new have the unique google account id in GOBUMAP mapped to the pidm. I will further expand on my scala api later. It is not for this post. 
 
-Now for SSOManager we need to create a CAS endpoint that maps all of the information to our applications that we can cover in another post if there is interest. The endpoint expects a claim called UDC_IDENTIFIER so that is what we give it. Then we use our Authentication to google as the backend and send the tickets to the appropriate endpoint. Assert identity with the mapped local subject identifier so that we are now existing as that id that we have mapped in gobumap.
+Now for SSOManager we need to create a CAS endpoint that maps all of the information to our applications that we can cover in another post if there is interest. The endpoint expects a claim called UDC_IDENTIFIER so that is what we give it. Then we use our Authentication to google as the backend and send the tickets to the appropriate endpoint. Assert identity with the mapped local subject identifier so that we are now existing as that id that we have mapped in the GOBUMAP table.
 
 ![Service Provider Claim Configuration](http://ChristopherDavenport.github.io/images/posts/2016-05/ServiceProviderClaimConfiguration.png)
 
